@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marine AI Whitsunday</title>
+<meta name="description" content="Can you trust AI with your boat? AI that knows your boat, works offline, and belongs to you. Fitted in the Whitsundays.">
+<link rel="icon" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* palette: a69c41 efe6d2 ccc8c5 998e4c 734564 aa778c 9b7643 a6a29f 8b523d
+       + two derived text tones (deep plum ink, warm grey) for legibility */
+    --cream:#EFE6D2; --panel:#F6F0E2; --stone:#CCC8C5; --plum:#734564; --mauve:#AA778C;
+    --olive:#A69C41; --ochre:#9B7643; --grey:#A6A29F; --rust:#8B523D;
+    --ink:#2B1E26; --muted:#5E5650;
+    --sans:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+    --mono:'IBM Plex Mono',Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--cream);color:var(--ink);font:400 18px/1.6 var(--sans)}
+  a{color:var(--plum)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  .label{font:500 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--rust)}
+  .ph{color:var(--rust)} /* placeholder to fill before going live */
+
+  /* HERO */
+  .hero{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:auto -10% -2px -10%;height:90px;
+    background:radial-gradient(120% 90px at 50% 100%,var(--cream) 0 60%,transparent 61%)}
+  .hero header{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .hero header img{height:44px;display:block}
+  .hero nav a{color:var(--stone);text-decoration:none;margin-left:22px;font-size:15px}
+  .hero nav a:hover{color:var(--cream)}
+  .hero nav a.cta{color:var(--cream);border:1px solid var(--mauve);padding:8px 14px;border-radius:6px;font-weight:600}
+  .hero .inner{padding:110px 0 170px}
+  .hero h1{font-size:clamp(44px,8.4vw,92px);line-height:1.02;font-weight:700;letter-spacing:-.02em;margin:0;max-width:11ch}
+  .hero h1 em{font-style:normal;color:var(--olive)}
+  .sonar{display:flex;gap:10px;align-items:center;margin-top:44px}
+  .sonar span{display:block;width:9px;height:9px;border-radius:50%;background:var(--olive);animation:ping 2.4s infinite}
+  @keyframes ping{0%{box-shadow:0 0 0 0 rgba(166,156,65,.55)}70%{box-shadow:0 0 0 14px rgba(166,156,65,0)}100%{box-shadow:0 0 0 0 rgba(166,156,65,0)}}
+  @media (prefers-reduced-motion:reduce){.sonar span{animation:none}}
+
+  /* RISK */
+  .risk{padding:40px 0 100px}
+  .risk .lines{margin-top:26px;max-width:760px}
+  .risk p{font-size:clamp(22px,2.9vw,30px);line-height:1.38;margin:0 0 .9em}
+  .risk .hinge{font-weight:600;color:var(--plum)}
+  .risk p.blow{font-weight:600}
+  .risk p.bridge{margin-top:1.6em;padding-left:20px;border-left:4px solid var(--olive);color:var(--plum);font-weight:600}
+
+  /* TRUST / SOLUTION */
+  .trust{background:var(--plum);color:var(--cream);padding:120px 0 110px}
+  .trust h2.big{font-size:clamp(44px,8.4vw,92px);line-height:1.02;letter-spacing:-.02em;margin:0;font-weight:700;max-width:12ch}
+  .trust .label{display:block;color:var(--stone);margin-top:40px}
+  .cards{list-style:none;padding:0;margin:20px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .cards li{background:var(--ink);border-top:3px solid var(--olive);border-radius:10px;padding:24px}
+  .cards .n{font:500 12px var(--mono);color:var(--olive);letter-spacing:.12em;margin-bottom:12px;display:block}
+  .cards b{display:block;font-size:clamp(20px,2.2vw,24px);line-height:1.2;margin-bottom:10px}
+  .cards span:not(.n){color:var(--stone);font-size:17px}
+
+  /* GENERIC SECTIONS */
+  section.std{padding:90px 0;border-bottom:1px solid var(--stone)}
+  h2{font-size:clamp(28px,4vw,42px);line-height:1.15;margin:12px 0 14px;font-weight:700;letter-spacing:-.01em}
+  h3{font-size:19px;margin:0 0 8px;font-weight:600}
+  p.lead{font-size:19px;color:var(--muted);max-width:640px}
+  .steps{counter-reset:s;list-style:none;padding:0;margin:34px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .steps li{counter-increment:s;border-top:3px solid var(--olive);padding-top:14px;color:var(--muted);font-size:16px}
+  .steps li::before{content:"0" counter(s);display:block;font:500 13px var(--mono);color:var(--rust);margin-bottom:6px}
+  .steps b{color:var(--ink);display:block;font-weight:600}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+  .card{background:var(--panel);border:1px solid var(--stone);border-top:3px solid var(--olive);border-radius:10px;padding:24px}
+  .card p{color:var(--muted);margin:0;font-size:16px}
+  .card .label{display:block;margin-bottom:12px;color:var(--plum)}
+  .proof{background:var(--ink);color:var(--cream);border-radius:12px;padding:36px}
+  .proof .label{color:var(--stone)}
+  .proof p{color:var(--stone)}
+  .proof .card{background:#3A2833;border-color:#4A3542;border-top-color:var(--ochre)}
+  .proof .card .label{color:var(--olive)}
+  .proof .card p{color:var(--stone)}
+  .people .role{font:500 13px var(--mono);color:var(--rust);margin-bottom:10px}
+  .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .btn{display:inline-block;padding:12px 20px;border-radius:6px;font-weight:600;text-decoration:none;border:1px solid var(--plum)}
+  .btn.primary{background:var(--plum);color:var(--cream)}
+  .btn.ghost{color:var(--plum)}
+  .btn .ph{color:inherit;text-decoration:underline dotted}
+  footer{padding:40px 0 56px;color:var(--muted);font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer img{height:36px}
+
+  @media (max-width:860px){
+    .cards,.grid2,.grid3{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .hero nav a:not(.cta){display:none}
+    .hero .inner{padding:70px 0 140px}
+    .risk{padding:20px 0 70px}
+    section.std{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <header>
+      <a href="#top" aria-label="Marine AI Whitsunday home"><img src="logo-reverse.svg" alt="Marine AI Whitsunday"></a>
+      <nav>
+        <a href="#solution">The solution</a>
+        <a href="#proof">Proven</a>
+        <a href="#about">About us</a>
+        <a class="cta" href="#contact">Talk to us</a>
+      </nav>
+    </header>
+    <div class="inner">
+      <h1>Can you trust AI with <em>your</em> boat?</h1>
+      <div class="sonar" aria-hidden="true"><span></span><span style="animation-delay:.4s"></span><span style="animation-delay:.8s"></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="risk">
+  <div class="wrap">
+    <span class="label">The risk you can't see</span>
+    <div class="lines">
+      <p>Your crew are already using AI on your boats, on their own phones, in their own accounts.</p>
+      <p>No two boats are the same, so every answer is generic. <span class="hinge">It's never been aboard.</span> It sounds sure of itself anyway.</p>
+      <p class="blow">A confident wrong answer is a decision someone makes with your boat.</p>
+      <p class="bridge">The answer isn't less AI. It's AI you can trust.</p>
+    </div>
+  </div>
+</section>
+
+<section class="trust" id="solution">
+  <div class="wrap">
+    <h2 class="big">Trust is earned aboard.</h2>
+    <span class="label">The solution</span>
+    <ul class="cards">
+      <li><span class="n">01</span><b>AI that knows your boat.</b><span>The wiring, the modifications, its history. No guessing. No bluffing.</span></li>
+      <li><span class="n">02</span><b>AI that works offline.</b><span>No bars? Not a problem. Get answers at the reef, in bad weather, without Wi-Fi.</span></li>
+      <li><span class="n">03</span><b>AI that belongs to you.</b><span>Your whole crew, one AI. Everything they discover, log and solve stays with the boat.</span></li>
+    </ul>
+  </div>
+</section>
+
+
+<section class="std" id="proof">
+  <div class="wrap">
+    <div class="proof">
+      <h2>Proven on the water.</h2>
+      <p>Smee is the onboard AI for the cruising yacht <em>Tarali</em>. It was sea-trialled here in the Whitsundays.</p>
+      <div class="grid3">
+        <div class="card"><span class="label">Voice</span><p>Speech in and speech out, running locally on board</p></div>
+        <div class="card"><span class="label">Live boat data</span><p>Knows the state of the boat, right now</p></div>
+        <div class="card"><span class="label">Offline</span><p>Works where the signal doesn't</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="std" id="about">
+  <div class="wrap">
+    <span class="label">About us</span>
+    <h2>Marine AI Whitsunday</h2>
+    <p class="lead">We build AI for boats, here in the Whitsundays. Our work happens aboard and at the marina.</p>
+  </div>
+</section>
+
+<section class="std" id="contact" style="border-bottom:0">
+  <div class="wrap">
+    <span class="label">Contact</span>
+    <h2>Put AI you can trust on your boats</h2>
+    <div class="btns">
+      <a class="btn primary" href="mailto:hello@aiwhitsunday.boats">Email hello@aiwhitsunday.boats</a>
+      <a class="btn ghost" href="tel:+61424747742">Call +61 424 747 742</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><img src="logo.svg" alt="Marine AI Whitsunday"></div>
+    <div>
+      Marine AI Whitsunday · ABN 23 451 164 221<br>
+      Whitsundays, Queensland · <a href="https://aiwhitsunday.boats">aiwhitsunday.boats</a> · hello@aiwhitsunday.boats<br>
+      On-board AI is a crew aid. It doesn't replace briefings, charts, skipper judgement or VHF.
+    </div>
+  </div>
+</footer>
+</body>
+</html>
